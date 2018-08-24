@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('http://fr.allfont.net/allfont.css?fonts=comic-sans-ms');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Dosis', sans-serif;
+  font-size: 5em;
+}
