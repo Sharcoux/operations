@@ -1,15 +1,14 @@
 import React from 'react';
-import ColorDisplayer from 'components/ColorDisplayer';
+import Digit from 'components/Digit';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Picker from 'components/Picker';
-import theme from 'theme';
 
-const Color = styled(ColorDisplayer)`
+const DigitRenderer = styled(Digit)`
     border: 2px raised '#888';
 `;
 
-const SelectedColor = styled(Color)`
+const SelectedDigit = styled(DigitRenderer)`
     filter: none;
     border: 2px solid red;
     position: relative;
@@ -17,16 +16,18 @@ const SelectedColor = styled(Color)`
     top: 2px
 `;
 
-const Renderer = props => (props.selected ? <SelectedColor {...props} /> : <Color {...props} />);
+const Renderer = props => (props.selected ? <SelectedDigit {...props} /> : <DigitRenderer {...props} />);
 Renderer.propTypes = {
   selected: PropTypes.bool,
 };
 
-const ColorPicker = props => (<Picker values={theme.colors} renderer={Renderer} {...props} />);
-ColorPicker.propTypes = {
+const digits = '0123456789_. '.split('');
+
+const DigitPicker = props => (<Picker values={digits} renderer={Renderer} {...props} />);
+DigitPicker.propTypes = {
   onUpdate: PropTypes.func,
   close : PropTypes.func,
   selected: PropTypes.string,
 };
 
-export default ColorPicker;
+export default DigitPicker;

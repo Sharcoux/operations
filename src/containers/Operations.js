@@ -6,6 +6,7 @@ import Operation from 'containers/Operation';
 import { View } from 'react-native-fix';
 import ColorDisplayer from 'components/ColorDisplayer';
 import ColorPicker from 'components/ColorPicker';
+import DigitPicker from 'components/DigitPicker';
 import paintIcon from 'images/paint.png';
 import Appearing from 'components/Appearing';
 import theme from 'theme';
@@ -24,19 +25,27 @@ class Operations extends React.PureComponent {
     this.setColor = color => this.setState({color});
     this.setOperation = operation => this.setState({operation});
     this.switchMode = mode => {
+      if(!['default', 'painting'].includes(mode)) console.error(`mode ${mode} is not supported in Operations`);
       this.setState({
         mode : this.state.mode===mode ? this.state.previousMode : mode,
         previousMode : this.state.mode,
       });
+    };
+    this.editDigit = digit => {
+      this.setState({digitPicking : true, focusedDigit : digit});
+    };
+    this.getDigit = () => {
+      return this.state.focusedDigit && this.state.focusedDigit.current && this.state.focusedDigit.current.state;
     };
     this.state = {
       mode: 'default',
       color: 'black',
       operation: '+',
       colorPicking: false,
+      digitPicking: false,
     };
     this.operations = operations.reduce(
-      (acc, op) => {acc[op] = <Operation type={op} />; return acc;}
+      (acc, op) => {acc[op] = <Operation type={op} digitPress={this.mode==='default' ? this.editDigit : undefined} />; return acc;}
       , {});
   }
   render() {
@@ -61,6 +70,9 @@ class Operations extends React.PureComponent {
         <View style={{position:'absolute'}}>
           <Appearing mount={this.state.colorPicking} delay={0.5}>
             <ColorPicker selected={this.state.color} close={() => this.setState({colorPicking: false})} onUpdate={color => this.setState({color})}/>
+          </Appearing>
+          <Appearing mount={this.state.digitPicking} delay={0.5}>
+            <DigitPicker selected={this.getDigit().value} close={() => this.setState({digitPicking: false})} onUpdate={value => this.getDigit().value = value}/>
           </Appearing>
         </View>
       </Container>

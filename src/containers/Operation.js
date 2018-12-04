@@ -5,6 +5,8 @@ import Tool from 'components/Tool';
 import InputLine from 'containers/InputLine';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import DigitPicker from 'components/DigitPicker';
+import Appearing from 'components/Appearing';
 
 const Column = styled(View)`
   line-height: 1.3em;
@@ -13,17 +15,16 @@ const Column = styled(View)`
 `;
 
 class Operation extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state={
-      inputs : {}
-    };
-  }
   render() {
     return (
       <View style={{flex: 1}}>
+        <InputLine onUpdate={data => }/>
         <InputLine/>
-        <InputLine/>
+        <View style={{position:'absolute'}}>
+          <Appearing mount={this.state.digitEditing} delay={0.5}>
+            <DigitPicker selected={this.state.digitPicking} close={() => this.setState({digitPicking: false})} onUpdate={value => this.setState({value})}/>
+          </Appearing>
+        </View>
       </View>
     );
   }

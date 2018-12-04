@@ -2,8 +2,6 @@ import React from 'react';
 import * as RN from 'react-native';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Modal from 'modal-react-native-web';
-export {default as Modal} from 'modal-react-native-web';
 export * from 'react-native';
 
 export const Text = styled(RN.Text)`
@@ -54,30 +52,30 @@ Modal2.propTypes = {
   className: PropTypes.string,
 };
 
-export const StyledModal = styled(Modal)`
+// export const StyledModal = styled(Modal)`
 
-  &__overlay {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    background-color: rgba(255, 255, 255, 0.75);
-  }
+//   &__overlay {
+//     position: fixed;
+//     top: 0px;
+//     left: 0px;
+//     right: 0px;
+//     bottom: 0px;
+//     background-color: rgba(255, 255, 255, 0.75);
+//   }
 
-  &__content {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
-    border: 1px solid #ccc;
-    background: #fff;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    borderRadius: 4px;
-    outline: none;
-    padding: 20px;
-  }
-`;
+//   &__content {
+//     position: absolute;
+//     top: 40px;
+//     left: 40px;
+//     right: 40px;
+//     bottom: 40px;
+//     border: 1px solid #ccc;
+//     background: #fff;
+//     overflow: auto;
+//     -webkit-overflow-scrolling: touch;
+//     borderRadius: 4px;
+//     outline: none;
+//     padding: 20px;
+//   }
+// `;
 

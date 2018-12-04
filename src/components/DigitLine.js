@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native-fix';
+import { Text, TouchableOpacity } from 'react-native-fix';
 import Row from 'components/Row';
 import Digit from 'components/Digit';
 import styled from 'styled-components';
@@ -11,6 +11,20 @@ const PeriodContainer = styled(Text)`
     left: -1em;
 `;
 const Period = () => (<PeriodContainer>,</PeriodContainer>);
+
+class DigitLine extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
+  }
+  getData() {
+    return; 
+  }
+}
+
+const TouchableDigit = props => (<TouchableOpacity key={props.key} onPress={() => edit(props)}>
+  
+</TouchableOpacity>);
 
 const DigitLine = props => {
   const value = props.value;
@@ -24,3 +38,5 @@ const DigitLine = props => {
 DigitLine.propTypes = {
   value: PropTypes.string,
 };
+
+export default DigitLine;

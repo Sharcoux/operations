@@ -11,4 +11,6 @@ export default {
   secondaryLight: '#ec764d',
   secondaryDark: '#b33b13',
   focus: 'red',
+
+  colors : ['black', 'blue', 'red', 'green', 'orange', 'lightgray', 'darkgray', 'purple', 'turquoise'],
 };
